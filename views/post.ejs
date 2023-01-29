@@ -1,0 +1,95 @@
+<%- include header %>
+<div class="container">
+  <div class="row">
+    <div class="primary-box">
+      <div class="primary-box-bd">
+        <form method="post" class="form">
+          <div class="form-group">
+            <label>标题：</label>
+            <input type="text" class="form-control" name="title" placeholder="请输入文章标题"/>
+          </div>
+          <div class="form-group">
+            <label>引文：</label>
+            <input type="text" class="form-control" name="titleInfo" placeholder="请输入文章介绍"/><br/>
+          </div>
+          <div class="form-group form-group-check">
+            <label>标签：</label>
+            <label class="checkbox-inline">
+              <input type="checkbox" name="tag" value="html&frasl;css"> html &frasl; css
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" name="tag" value="javascript"> javascript
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" name="tag" value="js插件"> js插件
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" name="tag" value="手机移动"> 手机移动
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" name="tag" value="性能优化"> 性能优化
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" name="tag" value="类库优化"> 类库优化
+            </label>
+          </div>
+          <div class="form-group">
+            <label>正文：</label>
+            <textarea id="markdown-editor" name="post" class="form-control" rows="12"></textarea>
+          </div>
+          <div class="form-group text-right">
+            <button type="submit" class="btn btn-success">发表</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    $(function () {
+        $('#markdown-editor').markdown();
+    });
+    $(function () {
+        $('.form').bootstrapValidator({
+            message: 'This value is not valid',
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                title: {
+                    validators: {
+                        notEmpty: {
+                            message: '标题不能为空'
+                        }
+                    }
+                },
+                titleInfo: {
+                    validators: {
+                        notEmpty: {
+                            message: '引文不能为空'
+                        }
+                    }
+                },
+                tag: {
+                    validators: {
+                        notEmpty: {
+                            message: '标签不能为空'
+                        }
+                    }
+                },
+                post: {
+                    validators: {
+                        notEmpty: {
+                            message: '正文不能为空'
+                        }
+                    }
+                }
+            }
+        });
+    });
+
+</script>
+<%- include footer %>

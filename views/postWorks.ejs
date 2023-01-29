@@ -1,0 +1,36 @@
+<%- include header %>
+<div class="container">
+  <div class="row">
+    <div class="primary-box">
+      <div class="primary-box-bd">
+        <form method="post" class="form">
+          <div class="form-group">
+            <label>作品标题：</label>
+            <input type="text" class="form-control" name="title" placeholder="请输入作品标题"/>
+          </div>
+          <div class="form-group">
+            <label>作品介绍：</label>
+            <input type="text" class="form-control" name="titleInfo" placeholder="请输入作品介绍"/><br/>
+          </div>
+          <div class="form-group">
+            <label>标签：</label>
+            <input type="text" class="form-control" name="tags" placeholder="请输入作品标签"/><br/>
+          </div>
+          <div class="form-group">
+            <label>正文：</label>
+            <textarea id="markdown-editor" name="post" class="form-control" rows="12"></textarea>
+          </div>
+          <div class="form-group text-right">
+            <button type="submit" class="btn btn-success">发表</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $('#markdown-editor').markdown();
+    });
+</script>
+<%- include footer %>

@@ -1,0 +1,22 @@
+<%- include header %>
+<% var lastYear = 0 %>
+<div class="container">
+  <div class="row">
+    <div class="primary-box">
+      <div class="primary-box-bd">
+        <% if(posts.length <= 0){ %>
+        暂无数据
+        <% } %>
+        <% posts.forEach(function (post, index) {  console.log(post) %>
+        <div class="page">
+          <h4 class="page-title"><a href="/u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>"><%= post.title %></a></h4>
+          <div class="media-body">
+            <p class="page-bodying"><span><%= post.time.day %></span></p>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include footer %>

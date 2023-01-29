@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= title %></title>
+  <!-- 新 Bootstrap 核心 CSS 文件 -->
+  <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+  <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+  <script src="/javascripts/jquery-1.9.1.js"></script>
+  <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+  <script src="/javascripts/bootstrap.min.js"></script>
+  <link href="//cdn.bootcss.com/bootstrap-validator/0.5.3/css/bootstrapValidator.min.css" rel="stylesheet">
+  <script src="//cdn.bootcss.com/bootstrap-validator/0.5.3/js/bootstrapValidator.js"></script>
+  <script src="//cdn.bootcss.com/bootstrap-validator/0.5.3/js/language/zh_CN.min.js"></script>
+  <link rel='stylesheet' href='/stylesheets/style.css'/>
+  <script src="/javascripts/markdown.js"></script>
+  <script src="/javascripts/markdown-editor-N.js"></script>
+</head>
+<body>
+
+<header>
+  <nav class="navbar navbar-default gxs-navbar">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/"><img class="logo" src="../images/logo.png" alt=""></a>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class="navbar-right">
+          <ul class="nav navbar-nav navbar-left">
+            <li class="<% if (title == "anhaogxs-blog") { %>active<% } %>"><a title="anhaogxs-blog" href="/">首页</a></li>
+            <li class="<% if (title == "作品") { %>active<% } %>"><a title="作品" href="/works">作品</a></li>
+            <% if (user) { %>
+            <!--<li class="<% if (title == "上传") { %>active<% } %>"><a title="上传" href="/upload">上传</a></li>-->
+            <li class="<% if (title == "发表") { %>active<% } %>"><a title="发表" href="/post">发表</a></li>
+            <li class="<% if (title == "发布作品") { %>active<% } %>"><a title="发布作品" href="/postWorks">发布作品</a></li>
+            <% } %>
+          </ul>
+          <ul class="nav navbar-nav navbar-left">
+            <% if (user) { %>
+            <li class="<% if (title == "个人中心") { %>active<% } %>"><a href="/u/<%= user.name %>">个人中心</a></li>
+            <li><a title="退出" href="/logout">退出</a></li>
+            <% } else { %>
+            <li class="<% if (title == "登录") { %>active<% } %>"><a title="登录" href="/login">登录</a></li>
+            <li class="<% if (title == "注册") { %>active<% } %>"><a title="注册" href="/reg">注册</a></li>
+            <% } %>
+          </ul>
+          <form class="navbar-form navbar-left" action="/search" method="GET">
+            <div class="row">
+              <div class="input-group">
+                <input type="text" class="form-control" name="keyword" placeholder="搜索你要找的文章">
+                <span class="input-group-btn"><button class="btn btn-default" type="submit">Go!</button></span>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div><!-- /.navbar-collapse -->
+    </div>
+  </nav>
+</header>
+
+<div class="container-fluid gxs-content">
+  <% if (success) { %>
+  <div class="gxs-alert alert alert-dismissible alert-success" style="display: block;" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <strong><%= success %></strong>
+  </div>
+  <% } %>
+  <% if(error){ %>
+  <div class="gxs-alert alert alert-dismissible alert-danger" style="display: block;" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <strong><%= error %></strong>
+  </div>
+  <% } %>
+

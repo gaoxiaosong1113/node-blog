@@ -1,0 +1,36 @@
+<%- include header %>
+<div class="container">
+  <div class="row">
+    <div class="primary-box">
+      <div class="primary-box-bd">
+        <div id="post-17011" class="single-post">
+          <div class="post-header"><h2 class="post-title"><a href="" title=""><%= post.title %></a></h2></div>
+          <div class="post-meta">
+            <ul class="inline-ul">
+              <li class="inline-li"><%= post.time.minute %></li>
+              <li class="inline-li"><span class="post-span">·</span></li>
+              <li class="inline-li">
+                <a class="gxs-tag" href="/tags/<%= post.tags %>" rel="category tag"><%= post.tags %></a>
+              </li>
+              <li class="inline-li"><span class="post-span">·</span></li>
+              <li class="inline-li"><%= post.pv %> 阅读</li>
+              <li class="inline-li"><span class="post-span">·</span></li>
+              <li class="inline-li"><a href="/post/<%= post.id %>"><%= post.comments.length %> 回复</a></li>
+            </ul>
+          </div>
+          <div class="post-body clearfix">
+            <div class="post-content markdown-body">
+              <%- post.post %>
+            </div>
+          </div>
+        </div>
+        <p>
+          <% if (user && (user.name == post.name)) { %>
+          <span><a class="edit" href="/editWork/<%= post.id %>">编辑</a></span>
+          <span><a class="edit" href="/removeWork/<%= post.id %>">删除</a></span>
+          <% } %>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include footer %>

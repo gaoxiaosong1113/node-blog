@@ -1,0 +1,52 @@
+<div class="comments">
+  <div class="comments-data"> 评论 (<%= post.comments.length %>)</div>
+  <div class="comments-container">
+    <ol class="commentlist clearfix">
+      <% post.comments.forEach(function (comment, index) { %>
+      <li class="comment even thread-even depth-1">
+        <div class="comment-body">
+          <div class="comment-avatar">
+            <img alt="" src="<%= comment.head %>" class="avatar avatar-50 photo" height="50" width="50" style="display: inline;">
+          </div>
+          <span class="comment-floor">
+            <% if (index == 0){ %>
+            沙发
+            <% } else { %>
+            <%= index + 1 %> 楼
+            <% } %>
+          </span>
+          <div class="comment-data">
+            <a href="<%= comment.website %>"><span class="comment-span"><%= comment.name ? comment.name : '游客' %></span></a>
+            <span class="comment-span comment-date"><%= comment.time %></span>
+            <% if (user && (user.name == post.name)) { %>
+            <a href="/removeComment/<%= post.name %>/<%= post.id %>/<%= index %>"><span>删除此评论</span></a>
+            <% } %>
+          </div>
+          <div class="comment-text"><p><%- comment.content %></p></div>
+        </div>
+      </li>
+      <% }) %>
+
+    </ol>
+    <div class="comments-data comments-data-footer clearfix">
+      <div class="comment-topnav"></div>
+      <h2 class="comments-title">发表评论</h2></div>
+  </div>
+  <div id="respond" class="respond">
+    <form method="post" action="/u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">
+      <% if (user) { %>
+      <input type="hidden" name="name" value="<%= user.name ? user.name : '游客' %>"/>
+      <input type="hidden" name="email" value="<%= user.email %>"/>
+      <input type="hidden" name="website" value="/u/<%= user.name %>"/>
+      <% } else { %>
+      <input type="hidden" name="name"/>
+      <input type="hidden" name="email"/>
+      <input type="hidden" name="website" value="http://"/>
+      <% } %>
+      <div class="form-group">
+        <textarea name="content" class="form-control" rows="5"></textarea>
+      </div>
+      <button type="submit" class="btn btn-default" value="留言">留言</button>
+    </form>
+  </div>
+</div>

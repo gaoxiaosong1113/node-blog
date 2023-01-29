@@ -1,0 +1,48 @@
+<%- include header %>
+<div class="container">
+  <div class="row">
+    <div class="primary-box">
+      <div class="primary-box-bd">
+        <form method="post" class="form">
+          <div class="form-group">
+            <label for="">标题：</label>
+            <input class="form-control" type="text" name="title" value="<%= post.title %>"/><br/>
+          </div>
+          <div class="form-group">
+            <label for="">标题：</label>
+            <input class="form-control" type="text" name="title" value="<%= post.titleInfo %>"/><br/>
+          </div>
+          <div class="form-group">
+            <label for="">标签：</label>
+            <label class="checkbox-inline">
+              <input type="checkbox" name="tag" value="html&frasl;css"> html &frasl; css
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" name="tag" value="javascript"> javascript
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" name="tag" value="js插件"> js插件
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" name="tag" value="手机移动"> 手机移动
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" name="tag" value="性能优化"> 性能优化
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" name="tag" value="类库优化"> 类库优化
+            </label>
+          </div>
+          <div class="form-group">
+            <label for="">正文：</label>
+            <textarea class="form-control" name="post" rows="20" cols="100"><%= post.post %></textarea><br/>
+          </div>
+          <div class="form-group text-right">
+            <button type="submit" class="btn btn-default">保存修改</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include footer %>

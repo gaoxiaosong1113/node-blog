@@ -1,0 +1,38 @@
+{
+  "name": "gxsblog",
+  "version": "1.0.0",
+  "private": true,
+  "description": "gxsblog for express4.x",
+  "scripts": {
+    "serve": "node app",
+    "test": "node --harmony ./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha",
+    "start": "pm2 start app.js --node-args='--harmony' --name 'gxsblog'",
+    "stop": "pm2 stop app.js --node-args='--harmony' --name 'gxsblog'",
+    "release": "git fetch --all && git reset --hard origin/master && git pull",
+    "linux-mongodb": "/usr/local/mongodb/bin/mongod --dbpath /usr/local/mongodb/mongData/db/ --logpath /usr/local/mongodb/mongData/db/mongo.log",
+    "mac-mongodb": "~/mongodb/bin/mongod --dbpath /usr/local/mongData/db/ --logpath /usr/local/mongData/db/mongo.log --fork"
+  },
+  "dependencies": {
+    "body-parser": "1.9.0",
+    "connect-flash": "0.1.1",
+    "connect-mongo": "0.8.2",
+    "cookie-parser": "1.3.3",
+    "crypto": "0.0.3",
+    "ejs": "1.0.0",
+    "express": "^4.10.2",
+    "express-session": "1.9.1",
+    "markdown": "0.5.0",
+    "marked": "^0.3.6",
+    "mongodb": "2.2.31",
+    "morgan": "1.9.0",
+    "multer": "1.1.0",
+    "pm2": "^2.2.1",
+    "serve-favicon": "2.1.5"
+  },
+  "devDependencies": {
+    "marked": "^0.3.6",
+    "serve-favicon": "2.1.5",
+    "serve-index": "^1.9.1",
+    "serve-static": "^1.13.1"
+  }
+}

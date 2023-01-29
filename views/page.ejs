@@ -1,0 +1,24 @@
+<div class="page">
+    <div class="media">
+        <div class="media-left">
+            <a href="/u/<%= post.name %>"><img src="<%= post.head %>" class="media-object img-rounded"/></a>
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading"><a href="u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>"><%= post.title %></a></h4>
+            <p class="media-bodying">
+                <span><%= post.time.minute %></span>
+                <span>阅读：<%= post.pv %></span>
+                <span>评论：<%= post.comments.length %></span>
+                <span>标签：
+                    <% post.tags.forEach(function (tag, index) { %>
+                    <% if (tag) { %>
+                    <i class="label label-default" href="/tags/<%= tag %>"><%= tag %></i>
+                    <% } %>
+                    <% }) %>
+                </span>
+                <span><a href="/u/<%= post.name %>"></a></span>
+            </p>
+        </div>
+    </div>
+    <p><%- post.titleInfo %></p>
+</div>

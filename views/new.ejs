@@ -1,0 +1,17 @@
+<h3>最近更新文章</h3>
+<ul class="list">
+  <% if(posts.length <= 0){ %>
+  暂无数据
+  <% } else { %>
+  <% posts.forEach(function (post, index) { %>
+  <% if(index < 10){ %>
+  <li>
+    <p><a href="/post/<%= post.id %>"><%= post.title %></a></p>
+    <p>
+      更新时间： <span><%= post.time.minute %></span>
+    </p>
+  </li>
+  <% } %>
+  <% }) %>
+  <% } %>
+</ul>

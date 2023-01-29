@@ -1,0 +1,47 @@
+<%- include header %>
+<div class="row">
+  <div class="container">
+    <div class="layer">
+      <% if(posts.length <= 0){ %>
+      <div class="primary-box">
+        <div class="primary-box-bd">
+          暂无数据
+        </div>
+      </div>
+      <% } %>
+      <% posts.forEach(function (work, index) { %>
+      <div class="col-lg-3">
+        <div class="layer-view">
+          <% if(work.postImg){ %>
+          <img src="<%= work.postImg %>">
+          <% }else{ %>
+          <img src="<%= work.head %>">
+          <% } %>
+          <div class="post-info">
+            <div class="post-basic-info">
+              <h3><a href="/works/<%= work.id %>"><%= work.title %></a></h3>
+              <span><a href="#"><label></label><%= work.tags %></a></span>
+              <p>Lorem Ipsum is simply dummy text of the printing &amp; typesetting industry.</p>
+            </div>
+            <div class="post-info-rate-share">
+              <div class="rateit">
+                <span></span><%= work.time.minute %>
+              </div>
+              <div class="post-share">
+                <%= work.pv %> 阅读&nbsp;&nbsp;,&nbsp;&nbsp;<%= work.comments.length %> 回复
+              </div>
+              <div class="clear"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</div>
+
+<style>
+
+</style>
+<%- include paging %>
+<%- include footer %>

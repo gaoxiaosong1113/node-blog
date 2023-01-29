@@ -1,0 +1,46 @@
+<%- include header %>
+
+<div class="container">
+  <div class="primary-box">
+    <div class="primary-box-bd">
+      <form  action='/upload' method='post' class="form" id="imagelist">
+        <div class="form-group">
+          <label>请选择文件</label>
+          <input type="file" class="btn btn-success" name='image'/>
+        </div>
+        <div class="form-group">
+          <input type="button" onClick="Req_ajax()" class="btn btn-default" value="提交"/>
+        </div>
+        <div id="status"></div>
+      </form>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+    var OL_Action_Root = "http://127.0.0.1:8080";
+    function Req_ajax() {
+        console.log($("#imagelist")[0])
+        var formData = new FormData($("#imagelist")[0]);
+        $.ajax({
+            url: OL_Action_Root + '/upload',
+            type: 'POST',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                var res = data;
+                if (res[0] == 'success') {
+                    document.getElementById("status").innerHTML = "<span style='color:green'>文件上传成功！<br>文件名为：" + res[1].filename + "</span>";
+                }
+                else {
+                    document.getElementById("status").innerHTML = "<span style='color:#EF0000'>文件上传失败！<br>原因是：" + res[1].msg + "</span>";
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                document.getElementById("status").innerHTML = "<span style='color:#EF0000'>连接不到服务器，请检查网络！</span>";
+            }
+        });
+    }
+</script>
+<%- include footer %>

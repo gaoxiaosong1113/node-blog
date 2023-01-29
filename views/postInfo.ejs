@@ -1,0 +1,41 @@
+<% if(posts.length <= 0){ %>
+暂无数据
+<% } %>
+<% posts.forEach(function (post, index) { %>
+<div class="post post-has-thumbnail">
+  <div class="post-header">
+    <h2 class="post-title">
+      <a href="/post/<%= post.id %>"><%= post.title %></a>
+    </h2>
+  </div>
+  <div class="post-meta">
+    <ul class="inline-ul">
+      <li class="inline-li"><%= post.time.minute %></li>
+      <li class="inline-li"><span class="post-span">·</span></li>
+      <li class="inline-li">
+        <% post.tags.forEach(function (tag, index) { %>
+        <% if (tag) { %>
+        <a class="gxs-tag" href="/tags/<%= tag %>" rel="category tag"><%= tag %></a>
+        <% } %>
+        <% }) %>
+      </li>
+      <li class="inline-li"><span class="post-span">·</span></li>
+      <li class="inline-li"><%= post.pv %> 阅读</li>
+      <li class="inline-li"><span class="post-span">·</span></li>
+      <li class="inline-li"><a href="/post/<%= post.id %>"><%= post.comments.length %> 回复</a></li>
+    </ul>
+  </div>
+  <div class="post-body">
+    <div class="post-thumbnail">
+      <a href="/u/<%= post.name %>" rel="">
+        <% if(post.postImg){ %>
+        <img class="lazy" src="<%= post.postImg %>">
+        <% }else{ %>
+        <img class="lazy" src="<%= post.head %>">
+        <% } %>
+      </a>
+    </div>
+    <div class="post-content"><p class="post-info"><%- post.titleInfo %></p></div>
+  </div>
+</div>
+<% }) %>
